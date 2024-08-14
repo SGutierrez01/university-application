@@ -23,7 +23,6 @@ public class App {
     private UniversityService universityService;
 
     public App() {
-        // Inyectamos las dependencias de los servicios utilizando sus respectivas implementaciones
         TeacherRepositoryImp teacherRepository = new TeacherRepositoryImp();
         StudentRepositoryImp studentRepository = new StudentRepositoryImp();
         ClassRepositoryImp classRepository = new ClassRepositoryImp();
@@ -31,14 +30,13 @@ public class App {
         this.fullTimeTeacherService = new TeacherServiceImp(teacherRepository, teacherRepository);
         this.partTimeTeacherService = new TeacherServiceImp(teacherRepository, teacherRepository);
         this.studentService = new StudentServiceImp(studentRepository);
-        this.classService = new ClassServiceImp(classRepository);
+        this.classService = new ClassServiceImp(classRepository, this.studentService, this.fullTimeTeacherService, this.partTimeTeacherService);
         this.universityService = new UniversityServiceImp(fullTimeTeacherService, partTimeTeacherService, studentService, classService);
 
         initializeData();
     }
 
     private void initializeData() {
-        // Initializing sample data as per the requirements
         FullTimeTeacher fullTimeTeacher1 = new FullTimeTeacher(1001, "John", "Doe", 40, "FT1", 5000, 6);
         FullTimeTeacher fullTimeTeacher2 = new FullTimeTeacher(1002, "Jane", "Smith", 35, "FT2", 5000, 10);
 
@@ -133,7 +131,7 @@ public class App {
 
         System.out.print("Enter the class ID to view details: ");
         int classId = Integer.parseInt(scanner.nextLine());
-        Class selectedClass = classService.getClassByName(String.valueOf(classId));
+        Class selectedClass = classService.getClassById(classId);
         if (selectedClass != null) {
             classService.printClassDetails(selectedClass);
         } else {
@@ -158,7 +156,7 @@ public class App {
         universityService.printAllClasses();
         System.out.print("Enter the class ID to add the student to: ");
         int classId = Integer.parseInt(scanner.nextLine());
-        Class selectedClass = classService.getClassByName(String.valueOf(classId));
+        Class selectedClass = classService.getClassById(classId);
         if (selectedClass != null) {
             selectedClass.getStudents().add(newStudent);
             System.out.println("Student added to the class.");

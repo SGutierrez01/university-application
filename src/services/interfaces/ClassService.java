@@ -5,10 +5,9 @@ import java.util.List;
 
 public interface ClassService {
     void addClass(Class newClass);
-    void removeClass(String className);
-    Class getClassByName(String className);
+    void removeClass(int classId);
+    Class getClassById(int classId);
     List<Class> getAllClasses();
-    String formatClassDetails(Class classObj);
     void printAllClasses();
     void printClassDetails(Class classObj);
 }
