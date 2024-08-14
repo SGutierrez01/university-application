@@ -1,6 +1,7 @@
 package repositories.implementations;
 
 import models.Class;
+import models.University;
 import repositories.interfaces.ClassRepository;
 
 import java.util.ArrayList;
@@ -8,35 +9,35 @@ import java.util.List;
 import java.util.Optional;
 
 public class ClassRepositoryImp implements ClassRepository {
-    private List<Class> classes = new ArrayList<>();
+    private University university = University.getInstance();
 
     @Override
     public void add(Class newClass) {
-        classes.add(newClass);
+        university.getClasses().add(newClass);
     }
 
     @Override
     public void update(Class updatedClass) {
-        int index = classes.indexOf(updatedClass);
+        int index = university.getClasses().indexOf(updatedClass);
         if (index >= 0) {
-            classes.set(index, updatedClass);
+            university.getClasses().set(index, updatedClass);
         }
     }
 
     @Override
     public void remove(Class classToRemove) {
-        classes.remove(classToRemove);
+        university.getClasses().remove(classToRemove);
     }
 
     @Override
     public Optional<Class> findById(int classId) {
-        return classes.stream()
+        return university.getClasses().stream()
                 .filter(c -> c.getClassId() == classId)
                 .findFirst();
     }
 
     @Override
     public List<Class> findAll() {
-        return new ArrayList<>(classes);
+        return university.getClasses();
     }
 }

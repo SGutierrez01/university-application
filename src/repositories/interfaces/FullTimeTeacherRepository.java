@@ -8,7 +8,7 @@ public interface FullTimeTeacherRepository {
     void add(FullTimeTeacher teacher);
     void update(FullTimeTeacher teacher);
     void remove(FullTimeTeacher teacher);
-    Optional<FullTimeTeacher> findById(String teacherId);
-    List<FullTimeTeacher> findAll();
+    Optional<FullTimeTeacher> findFullTimeTeacherById(String teacherId);
+    List<FullTimeTeacher> findAllFullTimeTeachers();
 }
 
