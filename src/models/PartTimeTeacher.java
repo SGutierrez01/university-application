@@ -3,8 +3,8 @@ package models;
 public class PartTimeTeacher extends Teacher {
     private double hoursPerWeek;
 
-    public PartTimeTeacher(int personId, String personFirstname, String personLastname, int personAge, String teacherId, double teacherBaseSalary, double hoursPerWeek) {
-        super(personId, personFirstname, personLastname, personAge, teacherId, teacherBaseSalary);
+    public PartTimeTeacher(int personId, String firstname, String lastname, int age, String teacherId, double baseSalary, double hoursPerWeek) {
+        super(personId, firstname, lastname, age, teacherId, baseSalary);
         this.hoursPerWeek = hoursPerWeek;
     }
 

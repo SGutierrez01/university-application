@@ -3,8 +3,8 @@ package models;
 public class Student extends Person {
     private String studentId;
 
-    public Student(int personId, String personFirstname, String personLastname, int personAge, String studentId) {
-        super(personId, personFirstname, personLastname, personAge);
+    public Student(int personId, String firstname, String lastname, int age, String studentId) {
+        super(personId, firstname, lastname, age);
         this.studentId = studentId;
     }
 

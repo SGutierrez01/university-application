@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Class {
     private int classId;
-    private String className;
-    private ClassRoom classRoom;
+    private String name;
+    private String classRoom;
     private Teacher teacher;
     private List<Student> students;
 
-    public Class(int classId, String className, ClassRoom classRoom,Teacher teacher, List<Student> students) {
+    public Class(int classId, String name, String classRoom,Teacher teacher, List<Student> students) {
         this.classId = classId;
-        this.className = className;
+        this.name = name;
         this.classRoom = classRoom;
         this.teacher = teacher;
         this.students = students;
@@ -21,9 +21,11 @@ public class Class {
         return classId;
     }
 
-    public String getClassName() {
-        return className;
+    public String getName() {
+        return name;
     }
+
+    public String getClassRoom() { return classRoom; }
 
     public Teacher getTeacher() {
         return teacher;
