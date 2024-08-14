@@ -1,22 +1,28 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class University {
-    private String universityName;
-    private List<Teacher> teachers;
-    private List<Student> students;
-    private List<Class> classes;
+    private static University instance;
+    private String name;
+    private List<Teacher> teachers = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
+    private List<Class> classes = new ArrayList<>();
 
-    public University(String universityName, List<Teacher> teachers, List<Student> students, List<Class> classes) {
-        this.universityName = universityName;
-        this.teachers = teachers;
-        this.students = students;
-        this.classes = classes;
+    private University() {
     }
 
-    public String getUniversityName() {
-        return universityName;
+    public static University getInstance() {
+        if (instance == null) {
+            instance = new University();
+        }
+        return instance;
+    }
+
+
+    public String getName() {
+        return name;
     }
 
     public List<Teacher> getTeachers() {

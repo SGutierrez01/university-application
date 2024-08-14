@@ -1,16 +1,16 @@
 package models;
 
-public abstract class Person {
+public class Person {
     private int personId;
-    private String personFirstname;
-    private String personLastname;
-    private int personAge;
+    private String firstname;
+    private String lastname;
+    private int age;
 
-    public Person(int personId, String personFirstname, String personLastname, int personAge) {
+    public Person(int personId, String firstname, String lastname, int age) {
         this.personId = personId;
-        this.personFirstname = personFirstname;
-        this.personLastname = personLastname;
-        this.personAge = personAge;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
     }
 
     public int getId() {
@@ -18,15 +18,15 @@ public abstract class Person {
     }
 
     public String getFirstname() {
-        return personFirstname;
+        return firstname;
     }
 
     public String getLastname() {
-        return personLastname;
+        return lastname;
     }
 
     public int getAge() {
-        return personAge;
+        return age;
     }
 }
 

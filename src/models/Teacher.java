@@ -2,12 +2,12 @@ package models;
 
 public abstract class Teacher extends Person {
     private String teacherId;
-    private double teacherBaseSalary;
+    private double baseSalary;
 
-    public Teacher(int personId, String personFirstname, String personLastname, int personAge, String teacherId, double teacherBaseSalary) {
-        super(personId, personFirstname, personLastname, personAge);
+    public Teacher(int personId, String firstname, String lastname, int age, String teacherId, double baseSalary) {
+        super(personId, firstname, lastname, age);
         this.teacherId = teacherId;
-        this.teacherBaseSalary = teacherBaseSalary;
+        this.baseSalary = baseSalary;
     }
 
     public String getTeacherId() {
@@ -15,7 +15,7 @@ public abstract class Teacher extends Person {
     }
 
     public double getBaseSalary() {
-        return teacherBaseSalary;
+        return baseSalary;
     }
 }
 
