@@ -2,75 +2,81 @@ package repositories.implementations;
 
 import models.FullTimeTeacher;
 import models.PartTimeTeacher;
+import models.University;
 import repositories.interfaces.FullTimeTeacherRepository;
 import repositories.interfaces.PartTimeTeacherRepository;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class TeacherRepositoryImp implements FullTimeTeacherRepository, PartTimeTeacherRepository {
-    private List<FullTimeTeacher> fullTimeTeachers = new ArrayList<>();
-    private List<PartTimeTeacher> partTimeTeachers = new ArrayList<>();
+    private University university = University.getInstance();
 
     @Override
     public void add(FullTimeTeacher teacher) {
-        fullTimeTeachers.add(teacher);
+        university.getTeachers().add(teacher);
     }
 
     @Override
     public void update(FullTimeTeacher teacher) {
-        int index = fullTimeTeachers.indexOf(teacher);
+        int index = university.getTeachers().indexOf(teacher);
         if (index >= 0) {
-            fullTimeTeachers.set(index, teacher);
+            university.getTeachers().set(index, teacher);
         }
     }
 
     @Override
     public void remove(FullTimeTeacher teacher) {
-        fullTimeTeachers.remove(teacher);
+        university.getTeachers().remove(teacher);
     }
 
     @Override
-    public Optional<FullTimeTeacher> findById(String teacherId) {
-        return fullTimeTeachers.stream()
-                .filter(t -> t.getTeacherId().equals(teacherId))
+    public Optional<FullTimeTeacher> findFullTimeTeacherById(String teacherId) {
+        return university.getTeachers().stream()
+                .filter(t -> t instanceof FullTimeTeacher && t.getTeacherId().equals(teacherId))
+                .map(t -> (FullTimeTeacher) t)
                 .findFirst();
     }
 
     @Override
-    public List<FullTimeTeacher> findAll() {
-        return new ArrayList<>(fullTimeTeachers);
+    public List<FullTimeTeacher> findAllFullTimeTeachers() {
+        return university.getTeachers().stream()
+                .filter(t -> t instanceof FullTimeTeacher)
+                .map(t -> (FullTimeTeacher) t)
+                .toList();
     }
 
     @Override
     public void add(PartTimeTeacher teacher) {
-        partTimeTeachers.add(teacher);
+        university.getTeachers().add(teacher);
     }
 
     @Override
     public void update(PartTimeTeacher teacher) {
-        int index = partTimeTeachers.indexOf(teacher);
+        int index = university.getTeachers().indexOf(teacher);
         if (index >= 0) {
-            partTimeTeachers.set(index, teacher);
+            university.getTeachers().set(index, teacher);
         }
     }
 
     @Override
     public void remove(PartTimeTeacher teacher) {
-        partTimeTeachers.remove(teacher);
+        university.getTeachers().remove(teacher);
     }
 
     @Override
-    public Optional<PartTimeTeacher> findById(String teacherId) {
-        return partTimeTeachers.stream()
-                .filter(t -> t.getTeacherId().equals(teacherId))
+    public Optional<PartTimeTeacher> findPartTimeTeacherById(String teacherId) {
+        return university.getTeachers().stream()
+                .filter(t -> t instanceof PartTimeTeacher && t.getTeacherId().equals(teacherId))
+                .map(t -> (PartTimeTeacher) t)
                 .findFirst();
     }
 
     @Override
-    public List<PartTimeTeacher> findAll() {
-        return new ArrayList<>(partTimeTeachers);
+    public List<PartTimeTeacher> findAllPartTimeTeachers() {
+        return university.getTeachers().stream()
+                .filter(t -> t instanceof PartTimeTeacher)
+                .map(t -> (PartTimeTeacher) t)
+                .toList();
     }
 }
 
