@@ -158,7 +158,7 @@ public class App {
         int classId = Integer.parseInt(scanner.nextLine());
         Class selectedClass = classService.getClassById(classId);
         if (selectedClass != null) {
-            selectedClass.getStudents().add(newStudent);
+            classService.addStudentToClass(classId, newStudent);
             System.out.println("Student added to the class.");
         } else {
             System.out.println("Class not found.");

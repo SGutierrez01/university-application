@@ -14,7 +14,7 @@ public class Class {
         this.name = name;
         this.classRoom = classRoom;
         this.teacher = teacher;
-        this.students = students;
+        this.students = new ArrayList<>(students);
     }
 
     public int getClassId() {

@@ -3,6 +3,7 @@ package services.implementations;
 import models.Class;
 import models.FullTimeTeacher;
 import models.PartTimeTeacher;
+import models.Student;
 import repositories.interfaces.ClassRepository;
 import services.interfaces.ClassService;
 import services.interfaces.FullTimeTeacherService;
@@ -55,6 +56,19 @@ public class ClassServiceImp implements ClassService {
     @Override
     public void printClassDetails(Class classObj) {
         System.out.println(formatClassDetails(classObj));
+    }
+
+    @Override
+    public void addStudentToClass(int classId, Student student) {
+        Class classObj = classRepository.findById(classId).orElse(null);
+        if (classObj != null) {
+            classObj.getStudents().add(student);
+            classRepository.update(classObj);
+            System.out.println("\nStudent added to the class successfully.");
+            printClassDetails(classObj);
+        } else {
+            System.out.println("Class not found.");
+        }
     }
 
     private String formatClassDetails(Class classObj) {

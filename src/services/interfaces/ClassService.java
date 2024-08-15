@@ -1,6 +1,8 @@
 package services.interfaces;
 
 import models.Class;
+import models.Student;
+
 import java.util.List;
 
 public interface ClassService {
@@ -10,4 +12,5 @@ public interface ClassService {
     List<Class> getAllClasses();
     void printAllClasses();
     void printClassDetails(Class classObj);
+    void addStudentToClass(int classId, Student student);
 }
