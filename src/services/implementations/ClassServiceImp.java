@@ -50,7 +50,7 @@ public class ClassServiceImp implements ClassService {
 
     @Override
     public void printAllClasses() {
-        getAllClasses().forEach(classObj -> System.out.println(formatClassDetails(classObj)));
+        getAllClasses().forEach(classObj -> System.out.println("\n- " + classObj.getName() + ": ID "+ classObj.getClassId()));
     }
 
     @Override
@@ -79,7 +79,7 @@ public class ClassServiceImp implements ClassService {
         StringBuilder studentDetails = new StringBuilder();
         classObj.getStudents().forEach(student -> studentDetails.append(studentService.formatStudentDetails(student)).append("\n"));
 
-        return String.format("Class [ID: %d, Name: %s]\nTeacher: %s\nStudents:\n%s",
+        return String.format("\nClass [ID: %d, Name: %s]\nTeacher: %s\nStudents:\n%s",
                 classObj.getClassId(), classObj.getName(), teacherDetails, studentDetails.toString());
     }
 }

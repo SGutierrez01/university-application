@@ -129,7 +129,7 @@ public class App {
         System.out.println("\n--- All Classes ---");
         universityService.printAllClasses();
 
-        System.out.print("Enter the class ID to view details: ");
+        System.out.print("\nEnter the class ID to view details: ");
         int classId = Integer.parseInt(scanner.nextLine());
         Class selectedClass = classService.getClassById(classId);
         if (selectedClass != null) {
@@ -154,12 +154,12 @@ public class App {
 
         System.out.println("\n--- All Classes ---");
         universityService.printAllClasses();
-        System.out.print("Enter the class ID to add the student to: ");
+        System.out.print("\nEnter the class ID to add the student to: ");
         int classId = Integer.parseInt(scanner.nextLine());
         Class selectedClass = classService.getClassById(classId);
         if (selectedClass != null) {
             classService.addStudentToClass(classId, newStudent);
-            System.out.println("Student added to the class.");
+            System.out.println("\nStudent added to the class.");
         } else {
             System.out.println("Class not found.");
         }
