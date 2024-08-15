@@ -1,4 +1,4 @@
-package main.java.com.university.models;
+package models;
 
 public class Person {
 }
